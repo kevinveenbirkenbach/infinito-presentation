@@ -1,38 +1,10 @@
 import os
 import glob
 import markdown
-from jinja2 import Template
+from jinja2 import Environment, FileSystemLoader
 
 # Base directory containing the README files
 BASE_DIR = "../cymais/roles"
-
-# Reveal.js HTML template
-TEMPLATE = """
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CyMaIS Presentation</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
-</head>
-<body>
-    <div class="reveal">
-        <div class="slides">
-            {% for title, content in slides %}
-            <section>
-                <h2>{{ title }}</h2>
-                <div>{{ content | safe }}</div>
-            </section>
-            {% endfor %}
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
-    <script> Reveal.initialize(); </script>
-</body>
-</html>
-"""
 
 def find_readmes():
     """Find all README files in a case-insensitive way."""
@@ -44,10 +16,8 @@ def find_readmes():
     
     return readmes + doc_files
 
-print(find_readmes())
-
 def generate_html():
-    """Generate the presentation HTML from README files."""
+    """Generate the presentation HTML from README files using a Jinja2 template file."""
     readmes = find_readmes()
     slides = []
 
@@ -60,8 +30,11 @@ def generate_html():
             title = os.path.basename(os.path.dirname(readme)).replace("-", " ").title()
             slides.append((title, html_content))
 
-    # Render HTML using Jinja2
-    template = Template(TEMPLATE)
+    # Set up Jinja2 environment and load the template file
+    env = Environment(loader=FileSystemLoader("templates"))
+    template = env.get_template("presentation.html.j2")
+
+    # Render HTML using the template
     html_output = template.render(slides=slides)
 
     # Save as index.html.j2
