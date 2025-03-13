@@ -1,12 +1,17 @@
 # Automatically regenerate `.env` before running any target
-.PHONY: all env up build run clean
+.PHONY: up build run clean link
 
-all: env up
+install: link build
 
-# `.env` is always regenerated
-env:
-	@echo "CYMAIS_REPOSITORY_PATH=$$(pkgmgr path cymais)" >> .env
-	@echo ".env file regenerated."
+# Create a symbolic link to the cymais repository
+link:
+	@CYMAIS_REPOSITORY_PATH=$$(pkgmgr path cymais); \
+	if [ -d $$CYMAIS_REPOSITORY_PATH ]; then \
+		cp -rv $$CYMAIS_REPOSITORY_PATH cymais; \
+		echo "Symbolic link created: cymais -> $$CYMAIS_REPOSITORY_PATH"; \
+	else \
+		echo "Error: Source directory does not exist!"; \
+	fi
 
 # Example: Start docker-compose
 up: 

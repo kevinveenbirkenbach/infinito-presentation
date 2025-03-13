@@ -1,8 +1,6 @@
 # Basis-Image für Python
 FROM python:slim
 
-ARG CYMAIS_REPOSITORY_PATH
-
 # Arbeitsverzeichnis festlegen
 WORKDIR /app
 
@@ -14,7 +12,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY app/ .
 
 # Copy CyMaIS Code
-COPY CYMAIS_REPOSITORY_PATH ./cymais-code
+COPY cymais/ ./cymais
 
 # Port freigeben
 EXPOSE 5000
