@@ -11,9 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Anwendungscode kopieren
 COPY app/ .
 
-# Copy CyMaIS Code
-COPY cymais/ ./cymais
-
 # Port freigeben
 EXPOSE 5000
 

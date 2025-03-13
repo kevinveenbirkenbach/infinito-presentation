@@ -9,4 +9,5 @@ services:
       - "5000:5000"
     volumes:
       - ./app:/app
+      - ./cymais:/cymais
     restart: unless-stopped
