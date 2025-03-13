@@ -1,0 +1,4 @@
+pkgmgr:
+- cymais
+pacman:
+- python
