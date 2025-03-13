@@ -1,0 +1,14 @@
+services:
+  landingpage:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        CYMAIS_REPOSITORY_PATH: "${CYMAIS_REPOSITORY_PATH}"
+    image: application-cymais-presentation
+    container_name: cymais-presentation
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./app:/app
+    restart: unless-stopped

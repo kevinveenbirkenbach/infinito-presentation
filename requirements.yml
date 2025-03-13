@@ -2,3 +2,5 @@ pkgmgr:
 - cymais
 pacman:
 - python
+- make
+# The python requirements are safed in the requirements.txt file
