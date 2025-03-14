@@ -1,4 +1,5 @@
 pacman:
 - python
 - make
+- git
 # The python requirements are safed in the requirements.txt file

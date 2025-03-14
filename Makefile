@@ -19,4 +19,6 @@ build: env
 	docker-compose build
 
 clean:
-	rm -f .env
+	git clean -f -d -X
+
+deinstall: clean
