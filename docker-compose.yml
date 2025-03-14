@@ -8,6 +8,6 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - ./app:/app
+      - ./:/app
       - ${PRESENTATION_SOURCE_PATH}:/source
     restart: unless-stopped

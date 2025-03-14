@@ -5,11 +5,11 @@ FROM python:slim
 WORKDIR /app
 
 # Abhängigkeiten kopieren und installieren
-COPY app/requirements.txt requirements.txt
+COPY ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Anwendungscode kopieren
-COPY app/ .
+COPY ./ .
 
 # Port freigeben
 EXPOSE 5000
