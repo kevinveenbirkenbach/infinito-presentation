@@ -1,28 +1,22 @@
 # Automatically regenerate `.env` before running any target
-.PHONY: up build run clean link
+.PHONY: up build run clean env
 
-install: link build
+install: env build
 
-# Create a symbolic link to the cymais repository
-link:
-	@CYMAIS_REPOSITORY_PATH=$$(pkgmgr path cymais); \
-	if [ -d $$CYMAIS_REPOSITORY_PATH ]; then \
-		cp -rv $$CYMAIS_REPOSITORY_PATH cymais; \
-		echo "Symbolic link created: cymais -> $$CYMAIS_REPOSITORY_PATH"; \
-	else \
-		echo "Error: Source directory does not exist!"; \
+env:
+	@if [ ! -f .env ] || ! grep -q "^PRESENTATION_SOURCE_PATH=" .env; then \
+		echo -n "Please enter the path for PRESENTATION_SOURCE_PATH: "; \
+		read path; \
+		echo "PRESENTATION_SOURCE_PATH=$$path" >> .env; \
 	fi
 
 # Example: Start docker-compose
-up: 
-	docker-compose up --build
+up: build
+	docker-compose up
 
 # Other Makefile targets
-build: 
+build: env
 	docker-compose build
-
-run: 
-	docker-compose run app
 
 clean:
 	rm -f .env

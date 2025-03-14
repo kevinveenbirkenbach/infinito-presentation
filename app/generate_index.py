@@ -4,7 +4,7 @@ import markdown
 from jinja2 import Environment, FileSystemLoader
 
 # Base directory containing the README files
-BASE_DIR = "../cymais/roles"
+BASE_DIR = "../source"
 
 def find_readmes():
     """Find all README files in a case-insensitive way."""
