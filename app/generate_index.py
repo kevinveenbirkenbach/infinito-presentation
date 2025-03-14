@@ -38,11 +38,11 @@ def generate_html():
     html_output = template.render(slides=slides)
 
     # Save as index.html.j2
-    output_path = os.path.join("templates", "index.html.j2")
+    output_path = os.path.join("static", "index.html")
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(html_output)
     
-    print(f"index.html.j2 successfully generated at {output_path}")
+    print(f"index.html successfully generated at {output_path}")
 
 if __name__ == "__main__":
     generate_html()
