@@ -2,10 +2,9 @@ import os
 import subprocess
 from flask import Flask
 from flask import render_template
-import os
 import glob
-import markdown
-import argparse
+
+from utils.slide_reader import get_slide
 
 def find_readmes(source_dir):
     """Find all README files in a case-insensitive way."""
@@ -16,17 +15,6 @@ def find_readmes(source_dir):
     doc_files = glob.glob(f"{source_dir}/*.md")
     
     return readmes + doc_files
-
-def get_slide(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        md_content = f.read()
-        md_content = md_content.replace("{{", "{% raw %}{{").replace("}}", "}}{% endraw %}")
-        html_content = markdown.markdown(md_content)
-        title = os.path.basename(os.path.dirname(file_path)).replace("-", " ").title()
-    return {
-        "title": title,
-        "content": html_content
-        }
 
 def get_slide_data(source_dir="/source"):
     """Generate the presentation HTML from README files using a Jinja2 template file."""
@@ -45,7 +33,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     slides = []
-    slides.append(get_slide("/source/docs/guides/administrator/Readme.md"))
+    slides.append(get_slide("/source/docs/guides/administrator/Readme.md","Key Responsibilities 🔧"))
     #slides_data = get_slide_data()
     return render_template('presentation.html.j2', slides=slides)
 
