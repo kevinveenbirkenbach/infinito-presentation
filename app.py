@@ -44,8 +44,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    slides_data = get_slide_data()
-    return render_template('presentation.html.j2', slides=slides_data)
+    slides = []
+    slides.append(get_slide("/source/docs/guides/administrator/Readme.md"))
+    #slides_data = get_slide_data()
+    return render_template('presentation.html.j2', slides=slides)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
