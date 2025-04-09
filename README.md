@@ -1,3 +1,50 @@
-# CyMaIS Presentation
+# CyMaIS Presentation 🚀
 
-https://revealjs.com/
+This is a **[Reveal.js](https://revealjs.com/)**-based presentation for **CyMaIS** showcasing the platform's key features, benefits, and target audiences. It provides a comprehensive overview specifically designed for:
+
+- **Administrators** 🔧
+- **Developers** 💻
+- **End-Users** 👨‍💻
+- **Businesses** 💼
+- **Investors** 💰
+
+### Overview
+This presentation is intended to introduce **CyMaIS** and highlight its functionalities, use cases, and benefits across different user groups. Whether you're an administrator, developer, end-user, business leader, or investor, this presentation will help you understand how CyMaIS can simplify infrastructure management and empower your organization.
+
+### Installation 📦
+To install the presentation, use **Kevin's Package Manager** under the alias `cymais-presentation`.
+
+1. **Install Kevin's Package Manager**:
+   You can install it from [here](https://github.com/kevinveenbirkenbach/package-manager).
+
+2. **Install CyMaIS Presentation**:
+   Once you have the package manager installed, run the following command to install the presentation:
+
+   ```bash
+   pkgmgr install cymais-presentation
+   ```
+
+   This will set up everything you need, including the necessary dependencies and files to run the presentation.
+
+### Features ✨
+- **Fully automated slides** showcasing **CyMaIS**.
+- Sections dedicated to different target audiences: administrators, developers, businesses, and investors.
+- Integrated **Markdown** and **Jinja2 templates** for dynamic content rendering.
+- **Responsive** and visually appealing using **Reveal.js** with **black theme**.
+
+### How to Run 💻
+Once installed, simply run:
+
+```bash
+cymais-presentation up
+```
+
+This will start a **Flask** server hosting the Reveal.js presentation at `http://localhost:5000`.
+
+### Contributing 💡
+Feel free to fork, improve, and contribute to this presentation! If you have any questions or suggestions, feel free to open an issue or submit a pull request.
+
+
+---
+
+For more information, check out the official CyMaIS website: [cymais.cloud](https://cymais.cloud)
