@@ -10,11 +10,18 @@
 <body>
     <div class="reveal">
         <div class="slides">
-            {% for slide in slides %}
-            <section>
-                <div>{{ slide.content }}</div>
-            </section>
-            {% endfor %}
+            {% include 'slides/title_slide.html.j2' %}
+            {% include 'slides/agenda_slide.html.j2' %}
+            {% include 'slides/introduction_slide.html.j2' %}
+            {% include 'slides/problem_statement_slide.html.j2' %}
+            {% include 'slides/main_content_slide.html.j2' %}
+            {% include 'slides/case_study_slide.html.j2' %}
+            {% include 'slides/results_slide.html.j2' %}
+            {% include 'slides/solutions_slide.html.j2' %}
+            {% include 'slides/summary_slide.html.j2' %}
+            {% include 'slides/qa_slide.html.j2' %}
+            {% include 'slides/closing_slide.html.j2' %}
+            {% include 'slides/acknowledgement_slide.html.j2' %}
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
