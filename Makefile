@@ -5,8 +5,7 @@ install: env build
 
 env:
 	@if [ ! -f .env ] || ! grep -q "^PRESENTATION_SOURCE_PATH=" .env; then \
-		echo -n "Please enter the path for PRESENTATION_SOURCE_PATH: "; \
-		read path; \
+		path=$$(pkgmgr path cymais); \
 		echo "PRESENTATION_SOURCE_PATH=$$path" >> .env; \
 	fi
 
