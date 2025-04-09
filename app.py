@@ -4,7 +4,7 @@ from flask import Flask
 from flask import render_template
 import glob
 
-from utils.slide_reader import get_slide
+from utils.slide_extractor import SlideExtractor
 
 def find_readmes(source_dir):
     """Find all README files in a case-insensitive way."""
@@ -33,7 +33,7 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     slides = []
-    slides.append(get_slide("/source/docs/guides/administrator/Readme.md","Key Responsibilities 🔧"))
+    slides.append(SlideExtractor("/source/docs/guides/administrator/Readme.md","Key Responsibilities 🔧").get_content())
     #slides_data = get_slide_data()
     return render_template('presentation.html.j2', slides=slides)
 
