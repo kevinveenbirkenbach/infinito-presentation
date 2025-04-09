@@ -3,3 +3,5 @@ pacman:
 - make
 - git
 # The python requirements are safed in the requirements.txt file
+pkgmgr:
+- cymais

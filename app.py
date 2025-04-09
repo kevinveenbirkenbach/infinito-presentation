@@ -5,7 +5,7 @@ from flask import Flask
 app = Flask(__name__)
 
 # Generate index.html.j2 before starting the server
-subprocess.run(["python", "main.py", "source", "static"], check=True)
+subprocess.run(["python", "main.py", "/source", "static"], check=True)
 
 @app.route('/')
 def index():
