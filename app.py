@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 # Register the SlideExtractor function in the Flask Jinja2 environment
 @app.before_request
-def register_slide_extractor():
+def register_extractor():
     app.jinja_env.globals['extract_slide'] = extract_slide
 
 @app.route('/')
