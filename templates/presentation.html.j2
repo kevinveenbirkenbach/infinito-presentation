@@ -10,9 +10,9 @@
 <body>
     <div class="reveal">
         <div class="slides">
-            {% for title, content in slides %}
+            {% for slide in slides %}
             <section>
-                <div>{{ content }}</div>
+                <div>{{ slide.content }}</div>
             </section>
             {% endfor %}
         </div>
