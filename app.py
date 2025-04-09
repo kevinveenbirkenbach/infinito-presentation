@@ -3,8 +3,15 @@ import subprocess
 from flask import Flask
 from flask import render_template
 import glob
+from jinja2 import Environment, FileSystemLoader
+from utils.slide_extractor import extract_slide
 
-from utils.slide_extractor import SlideExtractor
+app = Flask(__name__)
+
+# Register the SlideExtractor function in the Flask Jinja2 environment
+@app.before_request
+def register_slide_extractor():
+    app.jinja_env.globals['extract_slide'] = extract_slide
 
 def find_readmes(source_dir):
     """Find all README files in a case-insensitive way."""
@@ -28,12 +35,11 @@ def get_slide_data(source_dir="/source"):
 def get_slides_composition():
     pass
 
-app = Flask(__name__)
-
 @app.route('/')
 def index():
     slides = []
-    slides.append(SlideExtractor("/source/docs/guides/administrator/Readme.md","Key Responsibilities 🔧").get_content())
+    slides.append(extract_slide("/source/docs/guides/administrator/Readme.md","Key Responsibilities 🔧"))
+    slides.append(extract_slide("/app/templates/start_page.html.j2"))
     #slides_data = get_slide_data()
     return render_template('presentation.html.j2', slides=slides)
 

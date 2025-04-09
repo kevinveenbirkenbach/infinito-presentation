@@ -82,3 +82,8 @@ class SlideExtractor:
             "title": title,
             "content": content
         }
+
+# Function to register SlideExtractor as a Jinja2 function
+def extract_slide(file_path, headline=None):
+    slide_extractor = SlideExtractor(file_path, headline)
+    return slide_extractor.get_content()
