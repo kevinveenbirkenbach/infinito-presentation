@@ -5,7 +5,7 @@
 }
 
 .scrollable-list {
-    max-height: 400px;   /* Limit the visible height */
+    max-height: 800px;   /* Limit the visible height */
     overflow-y: auto;    /* Add vertical scrollbar when needed */
     padding-right: 1rem; /* Optional: prevent overlap with scrollbar */
 }
