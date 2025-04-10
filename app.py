@@ -6,6 +6,7 @@ import glob
 from jinja2 import Environment, FileSystemLoader
 from utils.slide_extractor import extract_slide
 from utils.list_snippets import list_snippets
+from utils.background_helper import get_background
 
 app = Flask(__name__)
 
@@ -18,6 +19,11 @@ def register_extractor():
 @app.template_global()
 def snippets(subdir):
     return list_snippets(app.template_folder, subdir)
+
+# Register the function globally for Jinja2
+@app.template_global()
+def background(file_path):
+    return get_background(app.template_folder, file_path)
 
 @app.route('/')
 def index():
