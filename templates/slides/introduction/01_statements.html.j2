@@ -1,0 +1,16 @@
+{% for section in ["problem", "vision"] %}
+<section id="{{ section }}_statement" {{ background('introduction/' ~ section) }}>
+  <h2>{{ section | title }} Statement</h2>
+  <section>
+    <blockquote class="fs-2 fragment fade-in">
+      <p>{{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Short").content }}</p>
+      <footer>
+        <a href="{{ docs_link("/source/docs/overview/" ~ (section | title) ~ "_Statement.md") }}">- CyMaIS {{section | title}} Statement</a>
+      </footer>
+    </blockquote>
+  </section>
+  <section>
+    {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Key Points").content }}
+  </section>
+</section>
+{% endfor %}
