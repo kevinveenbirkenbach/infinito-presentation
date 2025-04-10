@@ -7,3 +7,21 @@
         <li>How CyMaIS Enhances User Security</li>
     </ul>
 </section>
+
+<section id="roles">
+    <section>
+        <h2>Available Docker Roles</h2>
+    </section>
+    {% for role_name, role in roles('docker-').items() %}
+        <section id="{{ role_name }}">
+            <h3>{{ role_name | replace('docker-', '') | replace('-', ' ') | title }}</h3>
+            {% if role.meta.galaxy_info %}
+            {{ role.meta.galaxy_info.description }}
+            {% endif %}
+            <p><a href="https://{{ role_name }}.yourdomain.local">Open Application</a></p>
+            <pre>
+                {{ role.meta | tojson(indent=2) }}
+            </pre>
+        </section>
+    {% endfor %}
+</section>

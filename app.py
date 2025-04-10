@@ -7,15 +7,19 @@ from jinja2 import Environment, FileSystemLoader
 from utils.slide_extractor import extract_slide
 from utils.list_snippets import list_snippets
 from utils.background_helper import get_background
+from utils.role_helper import list_roles_with_meta
 
 app = Flask(__name__)
+
+@app.template_global()
+def roles(prefix=None, required_tags=None):
+    return list_roles_with_meta("/source/roles", prefix=prefix, required_tags=required_tags)
 
 # Register the SlideExtractor function in the Flask Jinja2 environment
 @app.before_request
 def register_extractor():
     app.jinja_env.globals['extract_slide'] = extract_slide
     
-# Funktion registrieren
 @app.template_global()
 def snippets(subdir):
     return list_snippets(app.template_folder, subdir)
