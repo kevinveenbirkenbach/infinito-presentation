@@ -41,18 +41,20 @@ def list_roles_with_meta(base_path, prefix=None, required_tags=None):
             if not any(tag in tags for tag in required_tags):
                 continue
 
+        application_id = role_name[len(prefix):] if prefix else role_name
+        
         # Determine title
         title = get_title_from_readme(readme_path)
         if not title:
             # Fallback: role_name without prefix
-            title = role_name[len(prefix):] if prefix else role_name
-            title = title.replace("-", " ").title()
+            title = application_id.replace("-", " ").title()
 
         roles[role_name] = {
             "path": role_path,
             "meta": meta,
             "readme": readme_path,
             "title": title,
+            "application_id": application_id, 
         }
 
     return dict(sorted(roles.items()))

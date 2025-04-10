@@ -26,8 +26,26 @@
     background-color: #0056b3;       /* Darker blue on hover */
 }
 
+.app-btn {
+    display: inline-block;
+    padding: 0.5em 1em;              /* Adds space inside the button */
+    background-color: #28a745;       /* Green background */
+    color: #fff;                     /* White text */
+    text-decoration: none;           /* Removes underline */
+    font-weight: bold;
+    border-radius: 4px;              /* Rounded corners */
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;                /* Adds spacing above the button */
+    margin-left: 1rem;               /* Space between the two buttons */
+}
+
+.app-btn:hover {
+    background-color: #1e7e34;       /* Darker green on hover */
+}
+
 /* Optional: Style the documentation link container */
 .documentation-link {
     text-align: center;
     margin: 1rem 0;
 }
+

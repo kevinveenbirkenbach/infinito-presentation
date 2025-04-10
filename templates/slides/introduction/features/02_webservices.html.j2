@@ -2,9 +2,9 @@
     <section>
         <h2>Available Webservices</h2>
         <ul class="scrollable-list">
-        {% for role_name, role in roles('docker-').items() %}
-            <li><a href="#docker-role-{{ role_name }}">{{ role.title }}</a></li>
-        {% endfor %}
+            {% for role_name, role in roles('docker-').items() %}
+                <li><a href="#docker-role-{{ role_name }}">{{ role.title }}</a></li>
+            {% endfor %}
         </ul>
     </section>
     {% for role_name, role in roles('docker-').items() %}
@@ -14,8 +14,11 @@
                 {{ role.meta.galaxy_info.description }}
             {% endif %}
             <div class="documentation-link">
-                <a class="doc-btn" href="{{ docs_link(role.readme) }}">
+                <a class="doc-btn" target="_blank" href="{{ docs_link(role.readme) }}">
                     <i class="fas fa-book"></i> View Documentation
+                </a>
+                <a class="app-btn" target="_blank" href="{{ app_url(role.application_id) }}">
+                    <i class="fas fa-play"></i> Try Software
                 </a>
             </div>
         </section>
