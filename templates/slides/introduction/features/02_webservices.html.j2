@@ -1,0 +1,19 @@
+<section id="features-webservices">
+    <section>
+        <h2>Available Webservices</h2>
+        <ul class="scrollable-list">
+        {% for role_name, role in roles('docker-').items() %}
+            <li><a href="#docker-role-{{ role_name }}">{{ role.title }}</a></li>
+        {% endfor %}
+        </ul>
+    </section>
+    {% for role_name, role in roles('docker-').items() %}
+        <section id="docker-role-{{ role_name }}">
+            <h3>{{ role.title }}</h3>
+            {% if role.meta.galaxy_info %}
+            {{ role.meta.galaxy_info.description }}
+            {% endif %}
+            <p><a href="https://{{ role_name }}.yourdomain.local">Open Application</a></p>
+        </section>
+    {% endfor %}
+</section>

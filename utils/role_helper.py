@@ -1,5 +1,18 @@
 import os
 import yaml
+import re
+
+def get_title_from_readme(readme_path):
+    if not os.path.exists(readme_path):
+        return None
+
+    with open(readme_path, "r", encoding="utf-8") as f:
+        for line in f:
+            # Look for first Markdown H1
+            if line.strip().startswith("# "):
+                return line.strip("# ").strip()
+    return None
+
 
 def list_roles_with_meta(base_path, prefix=None, required_tags=None):
     roles = {}
@@ -28,10 +41,18 @@ def list_roles_with_meta(base_path, prefix=None, required_tags=None):
             if not any(tag in tags for tag in required_tags):
                 continue
 
+        # Determine title
+        title = get_title_from_readme(readme_path)
+        if not title:
+            # Fallback: role_name without prefix
+            title = role_name[len(prefix):] if prefix else role_name
+            title = title.replace("-", " ").title()
+
         roles[role_name] = {
             "path": role_path,
             "meta": meta,
             "readme": readme_path,
+            "title": title,
         }
 
     return dict(sorted(roles.items()))
