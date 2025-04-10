@@ -8,8 +8,14 @@ from utils.slide_extractor import extract_slide
 from utils.list_snippets import list_snippets
 from utils.background_helper import get_background
 from utils.role_helper import list_roles_with_meta
+from utils.docs_link_generator import generate_docs_link
 
 app = Flask(__name__)
+
+@app.template_global()
+def docs_link(source_path):
+    """Return a documentation link based on the given source path."""
+    return generate_docs_link(source_path)
 
 @app.template_global()
 def roles(prefix=None, required_tags=None):

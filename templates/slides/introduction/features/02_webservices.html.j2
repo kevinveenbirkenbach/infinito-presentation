@@ -11,9 +11,13 @@
         <section id="docker-role-{{ role_name }}">
             <h3>{{ role.title }}</h3>
             {% if role.meta.galaxy_info %}
-            {{ role.meta.galaxy_info.description }}
+                {{ role.meta.galaxy_info.description }}
             {% endif %}
-            <p><a href="https://{{ role_name }}.yourdomain.local">Open Application</a></p>
+            <div class="documentation-link">
+                <a class="doc-btn" href="{{ docs_link(role.readme) }}">
+                    <i class="fas fa-book"></i> View Documentation
+                </a>
+            </div>
         </section>
     {% endfor %}
 </section>
