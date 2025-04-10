@@ -1,0 +1,14 @@
+<section id="target-groups">
+    <h2>CyMaIS for...</h2>
+    <ul>
+        <li><a href="#for-users">...Users</a></li>
+        <li><a href="#for-administrators">...System Administrators</a></li>
+        <li><a href="#for-developers">...Developers</a></li>
+        <li><a href="#for-investors">...Investors</a></li>
+        <li><a href="#for-business">...Business</a></li>
+    </ul>
+</section>
+
+{% for file in snippets('slides/target_groups') %}
+  {% include file %}
+{% endfor %}

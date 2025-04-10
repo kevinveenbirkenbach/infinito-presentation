@@ -9,6 +9,6 @@
         <li>How CyMaIS Simplifies Infrastructure Management</li>
     </ul>
 </section>
-
-{% include 'slides/introduction/problem.html.j2' %}
-{% include 'slides/introduction/vision.html.j2' %}
+{% for file in snippets('slides/introduction') %}
+    {% include file %}
+{% endfor %}

@@ -10,17 +10,9 @@
 <body>
     <div class="reveal">
         <div class="slides">
-            {% include 'slides/title.html.j2' %}
-            {% include 'slides/agenda.html.j2' %}
-            {% include 'slides/introduction.html.j2' %}
-            {% include 'slides/main_content.html.j2' %}
-            {% include 'slides/case_study.html.j2' %}
-            {% include 'slides/results.html.j2' %}
-            {% include 'slides/solutions.html.j2' %}
-            {% include 'slides/summary.html.j2' %}
-            {% include 'slides/qa.html.j2' %}
-            {% include 'slides/closing.html.j2' %}
-            {% include 'slides/acknowledgement.html.j2' %}
+        {% for file in snippets('slides') %}
+            {% include file %}
+        {% endfor %}
         </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>

@@ -5,6 +5,7 @@ from flask import render_template
 import glob
 from jinja2 import Environment, FileSystemLoader
 from utils.slide_extractor import extract_slide
+from utils.list_snippets import list_snippets
 
 app = Flask(__name__)
 
@@ -12,6 +13,11 @@ app = Flask(__name__)
 @app.before_request
 def register_extractor():
     app.jinja_env.globals['extract_slide'] = extract_slide
+    
+# Funktion registrieren
+@app.template_global()
+def snippets(subdir):
+    return list_snippets(app.template_folder, subdir)
 
 @app.route('/')
 def index():
