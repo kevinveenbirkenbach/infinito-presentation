@@ -49,3 +49,7 @@ blockquote {
     margin: 1rem 0;
 }
 
+.beaver-center{
+    max-width:  800px !important;
+    max-height: 500px !important;
+}

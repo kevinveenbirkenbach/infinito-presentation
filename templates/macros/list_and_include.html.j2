@@ -1,29 +1,26 @@
-{# 
-    Render a section with:
-    - headline
-    - auto-generated list of headlines in the given path
-    - includes all files from path
-    - automatically determines background from path
-
-    Required:
-        headline: The section headline
-        path:     Subdirectory for snippets
-#}
-
 <section id="{{ headline | lower | replace(' ', '-') }}" {{ background(path) }}>
     <h2>{{ headline }}</h2>
 
-    <ul>
-    {% for entry in headlines(path) %}
-        <li>
-            {% if entry.id %}
-                <a href="#{{ entry.id }}">{{ entry.headline }}</a>
-            {% else %}
-                {{ entry.headline }}
-            {% endif %}
-        </li>
-    {% endfor %}
-    </ul>
+    <div class="d-flex align-items-start">
+        {% if beaver %}
+            <img src="static/img/slides/pictures/beaver/{{ beaver }}.png" 
+                 alt="Beaver" 
+                 class="me-4" 
+                 style="max-width: 200px; height: auto;">
+        {% endif %}
+
+        <ul>
+        {% for entry in headlines(path) %}
+            <li>
+                {% if entry.id %}
+                    <a href="#{{ entry.id }}">{{ entry.headline }}</a>
+                {% else %}
+                    {{ entry.headline }}
+                {% endif %}
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
 </section>
 
 {% for file in snippets(path) %}
