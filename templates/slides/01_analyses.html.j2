@@ -1,3 +1,6 @@
+{% set headline = 'Analyse' %}
+{% set beaver = 'research' %}
+{% include 'macros/beaver_picture.html.j2' %}
 {% for section in ["problem", "vision"] %}
 <section id="{{ section }}_statement" {{ background('introduction/' ~ section) }}>
   <h2>{{ section | title }} Statement</h2>

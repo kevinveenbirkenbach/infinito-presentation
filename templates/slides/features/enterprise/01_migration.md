@@ -1,1 +1,0 @@
-{{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Key Points").content }}

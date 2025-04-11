@@ -45,6 +45,9 @@ This will start a **Flask** server hosting the Reveal.js presentation at `http:/
 Feel free to fork, improve, and contribute to this presentation! If you have any questions or suggestions, feel free to open an issue or submit a pull request.
 
 
+## Resources
+- [Build Beaver Images](https://chatgpt.com/c/67f92dc5-c144-800f-8956-90221ba13eb3)
+
 ---
 
 For more information, check out the official CyMaIS website: [cymais.cloud](https://cymais.cloud)
