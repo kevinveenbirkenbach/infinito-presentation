@@ -120,13 +120,14 @@ def load_market_info(market_dir):
         market["diagram3"] = ""
         logging.debug("No diagram content loaded, setting diagrams to empty strings.")
 
-    # Generate the beaver image name from the title, for example "Global Market Analysis" -> "global-market-analysis.png"
-    beaver_image = market["title"].lower().replace(" ", "-")
-    market["beaver"] = beaver_image + ".png"
-    logging.debug(f"Generated beaver image file: {market['beaver']}")
-
     # Set a unique ID (for example, the directory name)
     market["id"] = os.path.basename(market_dir)
+
+    # Generate the beaver image name from the title, for example "Global Market Analysis" -> "global-market-analysis.png"
+    beaver_image = market["id"].lower().replace(" ", "-")
+    market["beaver"] = beaver_image + ".png"    
+    logging.debug(f"Generated beaver image file: {market['beaver']}")
+
     logging.debug(f"Assigned market ID: {market['id']}")
     return market
 
@@ -141,13 +142,9 @@ def load_all_markets(base_dir):
     markets = []
     for item in os.listdir(base_dir):
         market_path = os.path.join(base_dir, item)
-        if os.path.isdir(market_path):
-            try:
-                market = load_market_info(market_path)
-                markets.append(market)
-                logging.debug(f"Loaded market: {market['title']}")
-            except Exception as e:
-                logging.error(f"Error loading market {item}: {e}")
+        market = load_market_info(market_path)
+        markets.append(market)
+        logging.debug(f"Loaded market: {market['title']}")
     markets.sort(key=lambda m: m["title"])
     logging.debug(f"Total markets loaded: {len(markets)}")
     return markets

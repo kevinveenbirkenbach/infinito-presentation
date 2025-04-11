@@ -11,7 +11,9 @@
         <section id="docker-role-{{ role_name }}">
             <h3>{{ role.title }}</h3>
             {% if role.meta.galaxy_info %}
+            <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
                 {{ role.meta.galaxy_info.description }}
+            </div>
             {% endif %}
             <div class="documentation-link">
                 <a class="doc-btn" target="_blank" href="{{ docs_link(role.readme) }}">
