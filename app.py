@@ -11,8 +11,17 @@ from utils.role_helper import list_roles_with_meta
 from utils.docs_link_generator import generate_docs_link
 from utils.app_url_generator import generate_app_url 
 from utils.headline_extractor import extract_first_headline
+from utils.markets_extractor import load_all_markets
+
 
 app = Flask(__name__)
+
+@app.context_processor
+def inject_markets():
+    # Adjust the path to your markets' base directory (for example, "../cymais/docs/market")
+    base_markets_dir = os.path.join("/source", "docs", "market")
+    markets = load_all_markets(base_markets_dir)
+    return dict(markets=markets)
 
 @app.template_global()
 def headlines(subdir):

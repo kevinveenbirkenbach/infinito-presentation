@@ -25,14 +25,42 @@
   {% set headline = 'Market Analyses' %}
   {% set beaver = 'market_optimistic' %}
   {% include 'macros/beaver_picture.html.j2' %}
-            <section id="market_volume">
-    <h2>Market Volume</h2>
-<div class="mermaid" style="width: 600px; height: 400px;">
-pie
-    title Germany: IT Modernization Status
-    "Fully Modernized (20%)": 20
-    "Partially Digitalized (30%)": 30
-    "Requires Major Modernization (50%)": 50
-</div>
-  </section>
+  {% for market in markets %}
+    <!-- One section per market -->
+    <section id="market-{{ market.id }}">
+      <!-- Fragment 1: Market title, beaver image, and a link to the analysis markdown -->
+      <div class="fragment" data-fragment-index="1">
+        <h3>
+          <a href="{{ market.analysis_link }}" target="_blank">{{ market.title }}</a>
+        </h3>
+        <img src="/static/img/slides/pictures/beaver/{{ market.beaver }}" alt="{{ market.title }}" class="beaver-center">
+      </div>
+      
+      <!-- Fragment 2: Introduction section -->
+      <div class="fragment" data-fragment-index="2">
+        <h4>Introduction</h4>
+        <div>
+          {{ market.introduction | safe }}
+        </div>
+      </div>
+      
+      <!-- Fragment 3: Diagram 1 -->
+      <div class="fragment" data-fragment-index="3">
+        <h4>Diagram 1</h4>
+        <pre>{{ market.diagram1 }}</pre>
+      </div>
+      
+      <!-- Fragment 4: Diagram 2 -->
+      <div class="fragment" data-fragment-index="4">
+        <h4>Diagram 2</h4>
+        <pre>{{ market.diagram2 }}</pre>
+      </div>
+      
+      <!-- Fragment 5: Diagram 3 -->
+      <div class="fragment" data-fragment-index="5">
+        <h4>Diagram 3</h4>
+        <pre>{{ market.diagram3 }}</pre>
+      </div>
+    </section>
+  {% endfor %}
 </section>
