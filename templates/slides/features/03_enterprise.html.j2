@@ -1,7 +1,9 @@
 
 
-<section id="essential">
-    <h2>Enterprise Features</h2>
+<section>
+    {% set headline = 'Enterprise Features' %}
+    {% set beaver = 'enterprise' %}
+    {% include 'macros/beaver_picture.html.j2' %}
     <section id="features-automated-deployment">
         <h2>Migration</h2>
         {{ extract_slide("/source/docs/features/Migration.md", "Key Points").content }}
