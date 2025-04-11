@@ -3,8 +3,8 @@
 {% include 'macros/beaver_picture.html.j2' %}
 {% for section in ["problem", "vision"] %}
 <section id="{{ section }}_statement" {{ background('analyses/' ~ section) }}>
-  <h2>{{ section | title }} Statement</h2>
   <section>
+    <h2>{{ section | title }} Statement</h2>
     <blockquote class="fs-2 fragment fade-in">
       {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Short").content }}
       <footer>
@@ -13,9 +13,10 @@
     </blockquote>
   </section>
   <section>
+    <h2>{{ section | title }} Statement Short</h2>
     <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
     {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Key Points").content }}
-     <img src="static/img/slides/pictures/beaver/{{section}}.png" width="100" class="ms-4"/>
+      <img src="static/img/slides/pictures/beaver/{{section}}.png" width="150" />
     </div>
   </section>
 </section>

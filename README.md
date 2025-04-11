@@ -47,6 +47,7 @@ Feel free to fork, improve, and contribute to this presentation! If you have any
 
 ## Resources
 - [Build Beaver Images](https://chatgpt.com/c/67f92dc5-c144-800f-8956-90221ba13eb3)
+- [Build Background Images](https://chatgpt.com/c/67f70260-c9a0-800f-a99e-ba16f03f8445)
 
 ---
 
