@@ -1,16 +1,17 @@
 <section id="features">
     <h2>Features</h2>
     <ul>
-        <li><a href="#features-automated-deployment">Automated IT Deployment</a></li>
-        <li><a href="#features-security">Enterprise-ready Security</a></li>
-        <li><a href="#features-scalability">Scalability & Flexibility</a></li>
-        <li><a href="#features-backup">Backup & Recovery Solutions</a></li>
-        <li><a href="#features-monitoring">Infrastructure Monitoring & Maintenance</a></li>
-        <li><a href="#features-webservices">Uncountable Webapplications</a></li>
-        <li><a href="#features-client-suites">Client Suites</a></li>
+    {% for entry in headlines('slides/introduction/features') %}
+        <li>
+            {% if entry.id %}
+                <a href="#{{ entry.id }}">{{ entry.headline }}</a>
+            {% else %}
+                {{ entry.headline }}
+            {% endif %}
+        </li>
+    {% endfor %}
     </ul>
 </section>
-
 {% for file in snippets('slides/introduction/features') %}
     {% include file %}
 {% endfor %}

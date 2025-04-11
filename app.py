@@ -10,8 +10,26 @@ from utils.background_helper import get_background
 from utils.role_helper import list_roles_with_meta
 from utils.docs_link_generator import generate_docs_link
 from utils.app_url_generator import generate_app_url 
+from utils.headline_extractor import extract_first_headline
 
 app = Flask(__name__)
+
+@app.template_global()
+def headlines(subdir):
+    files = list_snippets(app.template_folder, subdir)
+    result = []
+
+    for file in files:
+        file_path = os.path.join(app.template_folder, file)
+        section_id, headline = extract_first_headline(file_path)
+
+        if headline:
+            result.append({
+                "id": section_id,
+                "headline": headline
+            })
+
+    return result
 
 @app.template_global()
 def app_url(application_id):

@@ -1,0 +1,24 @@
+<section id="user-features">
+    <h2>User Features</h2>
+    <ul>
+    {% for entry in headlines('slides/introduction/features/user') %}
+        <li>
+            {% if entry.id %}
+                <a href="#{{ entry.id }}">{{ entry.headline }}</a>
+            {% else %}
+                {{ entry.headline }}
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+</section>
+
+{% for file in snippets('slides/introduction/features/user') %}
+    {% include file %}
+{% endfor %}
+
+{% include 'macros/list_and_include.html.j2' with
+    headline='User Features',
+    path='slides/introduction/features/user',
+    background=background('introduction/features/user')
+%}
