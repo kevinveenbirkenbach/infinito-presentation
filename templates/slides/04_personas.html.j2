@@ -1,14 +1,25 @@
-<section id="target-groups">
-    <h2>Personas</h2>
-    <ul>
-        <li><a href="#for-users">...Users</a></li>
-        <li><a href="#for-administrators">...System Administrators</a></li>
-        <li><a href="#for-developers">...Developers</a></li>
-        <li><a href="#for-investors">...Investors</a></li>
-        <li><a href="#for-business">...Business</a></li>
-    </ul>
+<section id="personas" {{ background('feature/personas') }}>
+    <section>
+        <h2>Personas</h2>
+        <ul class="scrollable-list fs-6">
+            {% for persona_name, persona in roles('persona-').items() %}
+                <li><a href="#persona-{{ persona_name }}">{{ persona.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% for persona_name, persona in roles('persona-').items() %}
+        <section id="persona-{{ persona_name }}">
+            <h3>{{ persona.title }}</h3>
+            {% if persona.meta.galaxy_info %}
+            <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
+                {{ persona.meta.galaxy_info.description }}
+            </div>
+            {% endif %}
+            <div class="documentation-link">
+                <a class="doc-btn" target="_blank" href="{{ docs_link(persona.readme) }}">
+                    <i class="fas fa-book"></i> View Documentation
+                </a>
+            </div>
+        </section>
+    {% endfor %}
 </section>
-
-{% for file in snippets('slides/target_groups') %}
-  {% include file %}
-{% endfor %}
