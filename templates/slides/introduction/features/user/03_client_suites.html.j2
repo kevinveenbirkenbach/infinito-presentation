@@ -1,0 +1,23 @@
+<section id="features-client-suites">
+    <section>
+        <h2>Client Suites</h2>
+        <ul class="scrollable-list fs-6">
+            {% for role_name, role in roles('client-').items() %}
+                <li><a href="#client-{{ role_name }}">{{ role.title }}</a></li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% for role_name, role in roles('client-').items() %}
+        <section id="client-{{ role_name }}">
+            <h3>{{ role.title }}</h3>
+            {% if role.meta.galaxy_info %}
+                {{ role.meta.galaxy_info.description }}
+            {% endif %}
+            <div class="documentation-link">
+                <a class="doc-btn" target="_blank" href="{{ docs_link(role.readme) }}">
+                    <i class="fas fa-book"></i> View Documentation
+                </a>
+            </div>
+        </section>
+    {% endfor %}
+</section>

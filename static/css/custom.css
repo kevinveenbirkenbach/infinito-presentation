@@ -1,13 +1,13 @@
+@import url("scrollable-list.css");
+
 .slide {
     background-image: url('/static/img/slides/backgrounds/default.png');
     background-size: cover;
     background-position: center;
 }
 
-.scrollable-list {
-    max-height: 800px;   /* Limit the visible height */
-    overflow-y: auto;    /* Add vertical scrollbar when needed */
-    padding-right: 1rem; /* Optional: prevent overlap with scrollbar */
+blockquote {
+    background-color: rgba(0, 0, 0, 0.4) !important;
 }
 
 .doc-btn {

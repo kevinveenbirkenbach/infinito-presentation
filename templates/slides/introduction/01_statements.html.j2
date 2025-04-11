@@ -3,13 +3,13 @@
   <h2>{{ section | title }} Statement</h2>
   <section>
     <blockquote class="fs-2 fragment fade-in">
-      <p>{{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Short").content }}</p>
+      {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Short").content }}
       <footer>
-        <a href="{{ docs_link("/source/docs/overview/" ~ (section | title) ~ "_Statement.md") }}">- CyMaIS {{section | title}} Statement</a>
+        <a target="_blank" href="{{ docs_link("/source/docs/overview/" ~ (section | title) ~ "_Statement.md") }}">- CyMaIS {{section | title}} Statement</a>
       </footer>
     </blockquote>
   </section>
-  <section>
+  <section class="{% if section == 'vision' %}text-black{% endif %}">
     {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Key Points").content }}
   </section>
 </section>
