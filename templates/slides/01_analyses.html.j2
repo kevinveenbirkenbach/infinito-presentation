@@ -2,7 +2,7 @@
 {% set beaver = 'research' %}
 {% include 'macros/beaver_picture.html.j2' %}
 {% for section in ["problem", "vision"] %}
-<section id="{{ section }}_statement" {{ background('introduction/' ~ section) }}>
+<section id="{{ section }}_statement" {{ background('analyses/' ~ section) }}>
   <h2>{{ section | title }} Statement</h2>
   <section>
     <blockquote class="fs-2 fragment fade-in">
@@ -13,8 +13,9 @@
     </blockquote>
   </section>
   <section>
-    <div class="border rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
+    <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
     {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Key Points").content }}
+     <img src="static/img/slides/pictures/beaver/{{section}}.png" width="100" class="ms-4"/>
     </div>
   </section>
 </section>

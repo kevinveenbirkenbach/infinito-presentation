@@ -1,6 +1,6 @@
-<section id="features-client-suites">
+<section id="features-client-suites" {{ background('feature/workstation') }}>
     <section>
-        <h2>Client Suites</h2>
+        <h2>Workstation</h2>
         <ul class="scrollable-list fs-6">
             {% for role_name, role in roles('client-').items() %}
                 <li><a href="#client-{{ role_name }}">{{ role.title }}</a></li>

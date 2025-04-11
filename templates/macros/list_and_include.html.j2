@@ -10,7 +10,7 @@
         path:     Subdirectory for snippets
 #}
 
-<section {{ background(path) }}>
+<section id="{{ headline | lower | replace(' ', '-') }}" {{ background(path) }}>
     <h2>{{ headline }}</h2>
 
     <ul>
