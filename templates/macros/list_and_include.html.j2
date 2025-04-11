@@ -3,20 +3,14 @@
     - headline
     - auto-generated list of headlines in the given path
     - includes all files from path
+    - automatically determines background from path
 
     Required:
         headline: The section headline
         path:     Subdirectory for snippets
-
-    Optional:
-        background: Reveal.js background attribute string
 #}
 
-<section
-    {% if background %}
-        {{ background }}
-    {% endif %}
->
+<section {{ background(path) }}>
     <h2>{{ headline }}</h2>
 
     <ul>

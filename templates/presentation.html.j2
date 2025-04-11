@@ -12,9 +12,15 @@
 <body>
     <div class="reveal">
         <div class="slides">
-        {% for file in snippets('slides') %}
-            {% include file %}
-        {% endfor %}
+        <section {{ background('title') }}>
+            <h1>Introducing <a href="https://cymais.cloud/">CyMaIS</a></h1>
+            <p>By
+                <a href="https://www.veen.world/">Kevin Veen-Birkenbach</a>
+            </p>
+        </section>
+        {% set headline = 'Agenda' %}
+        {% set path = 'slides/' %}
+        {% include 'macros/list_and_include.html.j2' %}
         </div>
     </div>
     <link rel="stylesheet" href="/static/css/custom.css">

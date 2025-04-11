@@ -1,7 +1,7 @@
 <section id="features">
     <h2>Features</h2>
     <ul>
-    {% for entry in headlines('slides/introduction/features') %}
+    {% for entry in headlines('slides/features') %}
         <li>
             {% if entry.id %}
                 <a href="#{{ entry.id }}">{{ entry.headline }}</a>
@@ -12,6 +12,6 @@
     {% endfor %}
     </ul>
 </section>
-{% for file in snippets('slides/introduction/features') %}
+{% for file in snippets('slides/features') %}
     {% include file %}
 {% endfor %}

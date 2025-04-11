@@ -9,8 +9,10 @@
       </footer>
     </blockquote>
   </section>
-  <section class="{% if section == 'vision' %}text-black{% endif %}">
+  <section>
+    <div class="border rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
     {{ extract_slide("/source/docs/overview/" ~ (section | title) ~ "_Statement.md", "Key Points").content }}
+    </div>
   </section>
 </section>
 {% endfor %}
