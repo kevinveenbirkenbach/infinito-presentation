@@ -1,8 +1,7 @@
 <section id="Closing">
-    <section>
-        <h2>Acknowledgements</h2>
-        <p>{{ acknowledgements_text }}</p>
-    </section>
+    {% set headline = 'Acknowledgements' %}
+    {% set beaver = 'hearts' %}
+    {% include 'macros/beaver_picture.html.j2' %}
     <section>
         <h2>Thank You</h2>
         <p>For any further questions, you can contact me at: <a href="mailto:{{ email }}">{{ email }}</a></p>

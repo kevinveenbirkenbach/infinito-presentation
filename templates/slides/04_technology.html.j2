@@ -1,0 +1,12 @@
+<section {{ background("server") }}>
+  {% set headline = 'Technology' %}
+  {% set beaver = 'architect' %}
+  {% include 'macros/beaver_picture.html.j2' %}
+  <section>
+      <h2>Architectur</h2>
+      <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
+      {{ extract_slide("/source/docs/ARCHITECTURE.md", "Key Points").content }}
+      <img src="static/img/slides/pictures/beaver/builder.png" width="150" />
+      </div>
+  </section>
+</section>

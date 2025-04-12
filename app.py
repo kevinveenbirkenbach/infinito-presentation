@@ -75,7 +75,7 @@ def register_slide_extractor():
 @app.route('/')
 def index():
     """Render the main presentation page."""
-    return render_template('presentation.html.j2')
+    return render_template('index.html.j2')
 
 
 if __name__ == "__main__":
