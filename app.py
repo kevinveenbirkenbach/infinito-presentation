@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 # Configuration paths
 CONFIG_PATH = "config.yml"
-MARKETS_PATH = "/source/docs/market"
+MARKETS_PATH = "/source/docs/analysis/market"
 ROLES_PATH = "/source/roles"
 
 # Initialize Services

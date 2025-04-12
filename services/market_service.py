@@ -24,7 +24,7 @@ class MarketService:
         Returns:
             dict: Parsed market information.
         """
-        analysis_file = os.path.join(market_dir, "analyses.md")
+        analysis_file = os.path.join(market_dir, "analysis.md")
         diagram_file = os.path.join(market_dir, "diagrams.md")
 
         market = {

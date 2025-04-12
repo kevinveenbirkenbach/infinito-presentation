@@ -1,0 +1,29 @@
+<section id="market" {{ background('market') }}>
+  {% set headline = 'Market Analyses' %}
+  {% set beaver = 'market_optimistic' %}
+  {% include 'macros/beaver_picture.html.j2' %}
+  {% for market in markets %}
+    <section id="market-{{ market.id }}" data-auto-animate>
+        <h3>{{ market.title }}</h3>
+        <img src="/static/img/slides/pictures/beaver/{{ market.beaver }}" alt="{{ market.title }}" class="beaver-center">
+    </section>
+    <section>
+        <h3>{{ market.title }}</h3>
+        <div>
+            {{ market.introduction | safe }}
+        </div>
+        <div class="documentation-link">
+            <a class="doc-btn" target="_blank" href="{{ docs_link(market.analysis_link) }}">
+                <i class="fas fa-book"></i> View Documentation
+            </a>
+        </div>
+    </section>
+    <section>
+        <h3>{{ market.title }}</h3>
+        <div class="mermaid">{{ market.diagram1 }}</div>
+    </section>
+  {% endfor %}
+  {% set headline = 'Market Analysis for CyMaIS on Mars' %}
+  {% set beaver = 'mars' %}
+  {% include 'macros/beaver_picture.html.j2' %}
+</section>
