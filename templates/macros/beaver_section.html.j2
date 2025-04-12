@@ -1,0 +1,19 @@
+{# templates/macros/beaver_section.html.j2 #}
+{% macro beaver_section(headline, beaver, content=None) %}
+<section id="{{ headline | lower | replace(' ', '-') }}">
+  <h2>{{ headline }}</h2>
+  {% if content %}
+    <div class="d-flex justify-content-between align-items-start">
+      <div class="flex-grow-1">
+        {{ content }}
+      </div>
+      <img src="static/img/slides/pictures/beaver/{{ beaver }}.png"
+           width="150"
+           class="ms-4 mb-2 float-end" />
+    </div>
+  {% else %}
+    <img src="static/img/slides/pictures/beaver/{{ beaver }}.png"
+         class="beaver-center"/>
+  {% endif %}
+</section>
+{% endmacro %}

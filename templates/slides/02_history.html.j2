@@ -1,5 +1,4 @@
 <section {{ background("history") }}>
-{% set headline = 'History' %}
-{% set beaver = 'library' %}
-{% include 'macros/beaver_picture.html.j2' %}
+{% from 'macros/beaver_section.html.j2' import beaver_section %}
+{{ beaver_section('History', 'library') }}
 </section>

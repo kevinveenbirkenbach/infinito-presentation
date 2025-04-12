@@ -1,7 +1,6 @@
 <section id="roadmap">
-    {% set headline = 'Roadmap' %}
-    {% set beaver = 'gant' %}
-    {% include 'macros/beaver_picture.html.j2' %}
+    {% from 'macros/beaver_section.html.j2' import beaver_section %}
+    {{ beaver_section('Roadmap', 'gant') }}
     <section>
         <h2>Open Project</h2>
         <ul>

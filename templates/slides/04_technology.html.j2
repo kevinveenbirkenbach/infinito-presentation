@@ -1,7 +1,6 @@
 <section {{ background("server") }}>
-  {% set headline = 'Technology' %}
-  {% set beaver = 'architect' %}
-  {% include 'macros/beaver_picture.html.j2' %}
+  {% from 'macros/beaver_section.html.j2' import beaver_section %}
+  {{ beaver_section('Technology', 'architect') }}
   <section>
     <h2>Architectur</h2>
     <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">

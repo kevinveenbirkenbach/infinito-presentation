@@ -1,3 +1,2 @@
-{% set headline = 'Q&A' %}
-{% set beaver = 'questions' %}
-{% include 'macros/beaver_picture.html.j2' %}
+{% from 'macros/beaver_section.html.j2' import beaver_section %}
+{{ beaver_section('Q&A', 'questions') }}
