@@ -1,76 +1,82 @@
 import os
-import subprocess
-from flask import Flask
-from flask import render_template
-import glob
-from jinja2 import Environment, FileSystemLoader
-from utils.slide_extractor import extract_slide
-from utils.list_snippets import list_snippets
+from flask import Flask, render_template
+from services.market_service import MarketService
+from services.role_service import RoleService
+from services.app_url_service import AppUrlService
+from services.docs_link_service import DocsLinkService
+from services.template_service import TemplateService
+from services.slide_service import SlideService
 from utils.background_helper import get_background
-from utils.role_helper import list_roles_with_meta
-from utils.docs_link_generator import generate_docs_link
-from utils.app_url_generator import generate_app_url 
 from utils.headline_extractor import extract_first_headline
-from utils.markets_extractor import load_all_markets
-
 
 app = Flask(__name__)
 
-@app.context_processor
-def inject_markets():
-    # Adjust the path to your markets' base directory (for example, "../cymais/docs/market")
-    base_markets_dir = os.path.join("/source", "docs", "market")
-    markets = load_all_markets(base_markets_dir)
-    return dict(markets=markets)
+# Configuration paths
+CONFIG_PATH = "config.yml"
+MARKETS_PATH = "/source/docs/market"
+ROLES_PATH = "/source/roles"
 
-@app.template_global()
-def headlines(subdir):
-    files = list_snippets(app.template_folder, subdir)
-    result = []
+# Initialize Services
+market_service = MarketService(MARKETS_PATH)
+role_service = RoleService(ROLES_PATH)
+app_url_service = AppUrlService(CONFIG_PATH)
+docs_link_service = DocsLinkService(CONFIG_PATH)
+template_service = TemplateService(app.template_folder)
+slide_service = SlideService()
 
-    for file in files:
-        file_path = os.path.join(app.template_folder, file)
-        section_id, headline = extract_first_headline(file_path)
-
-        if headline:
-            result.append({
-                "id": section_id,
-                "headline": headline
-            })
-
-    return result
-
-@app.template_global()
-def app_url(application_id):
-    """Generate an application URL based on the given application ID."""
-    return generate_app_url(application_id)
-
-@app.template_global()
-def docs_link(source_path):
-    """Return a documentation link based on the given source path."""
-    return generate_docs_link(source_path)
-
-@app.template_global()
-def roles(prefix=None, required_tags=None):
-    return list_roles_with_meta("/source/roles", prefix=prefix, required_tags=required_tags)
-
-# Register the SlideExtractor function in the Flask Jinja2 environment
-@app.before_request
-def register_extractor():
-    app.jinja_env.globals['extract_slide'] = extract_slide
-    
-@app.template_global()
-def snippets(subdir):
-    return list_snippets(app.template_folder, subdir)
-
-# Register the function globally for Jinja2
 @app.template_global()
 def background(file_path):
     return get_background(app.template_folder, file_path)
 
+@app.context_processor
+def inject_markets():
+    """Inject markets into all templates."""
+    return dict(markets=market_service.load_all_markets())
+
+@app.template_global()
+def headlines(subdir):
+    return [
+        {"id": section_id, "headline": headline}
+        for file in template_service.list_snippets(subdir)
+        for section_id, headline in [extract_first_headline(os.path.join(app.template_folder, file))]
+        if headline
+    ]
+
+@app.template_global()
+def app_url(application_id):
+    """Generate application URL."""
+    return app_url_service.generate_url(application_id)
+
+
+@app.template_global()
+def docs_link(source_path):
+    """Generate documentation link."""
+    return docs_link_service.generate_link(source_path)
+
+
+@app.template_global()
+def roles(prefix=None, required_tags=None):
+    """Return roles filtered by prefix and tags."""
+    return role_service.list_roles_with_meta(prefix=prefix, required_tags=required_tags)
+
+
+@app.template_global()
+def snippets(subdir):
+    """Return list of snippet files for a given subdirectory."""
+    return template_service.list_snippets(subdir)
+
+
+@app.before_request
+def register_slide_extractor():
+    """Register extract_slide globally in Jinja2 environment."""
+    app.jinja_env.globals['extract_slide'] = slide_service.extract_content
+
+
 @app.route('/')
 def index():
+    """Render the main presentation page."""
     return render_template('presentation.html.j2')
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=5000)
