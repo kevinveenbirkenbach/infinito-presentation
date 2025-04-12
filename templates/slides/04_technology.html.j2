@@ -1,13 +1,7 @@
 <section {{ background("server") }}>
   {% from 'macros/beaver_section.html.j2' import beaver_section %}
   {{ beaver_section('Technology', 'architect') }}
-  <section>
-    <h2>Architectur</h2>
-    <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
-      {{ extract_slide("/source/docs/ARCHITECTURE.md", "Key Points").content }}
-      <img src="static/img/slides/pictures/beaver/builder.png" 
-          width="150" 
-          class="float-end ms-4 mb-2" />
-    </div>
-  </section>
+  {% from 'macros/beaver_section.html.j2' import beaver_section %}
+  {{ beaver_section('Architectur','builder',extract_slide("/source/docs/ARCHITECTURE.md", "Key Points").content
+  ) }}
 </section>

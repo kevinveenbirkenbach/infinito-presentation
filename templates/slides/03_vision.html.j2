@@ -8,12 +8,8 @@
         </footer>
         </blockquote>
     </section>
-    <section>
-        <h2>Vision Short</h2>
-        <div class="rounded p-4 my-4 bg-dark text-white shadow-sm bg-opacity-75 fs-2">
-        {{ extract_slide("/source/docs/vision/README.md", "Key Points").content }}
-        <img src="static/img/slides/pictures/beaver/vision.png" width="150" />
-        </div>
-    </section>
-    </section>
+  {% from 'macros/beaver_section.html.j2' import beaver_section %}
+  {{ beaver_section('Vision Summary','vision',
+  extract_slide("/source/docs/vision/README.md", "Key Points").content
+  ) }}
 </section>
