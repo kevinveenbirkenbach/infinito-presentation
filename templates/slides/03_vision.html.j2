@@ -8,8 +8,6 @@
         </footer>
         </blockquote>
     </section>
-  {% from 'macros/section.html.j2' import beaver_section %}
-  {{ beaver_section('Vision Summary','vision',
-  extract_slide("/source/docs/vision/README.md", "Key Points").content
-  ) }}
+  {% from 'macros/list.html.j2' import beaver_list %}
+  {{ beaver_list('Vision Summary', extract_slide('/source/docs/vision/README.md', "Key Points", output_type="list").content, 'vision-right') }}
 </section>
