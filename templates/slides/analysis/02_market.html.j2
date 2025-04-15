@@ -1,5 +1,5 @@
 <section id="market" {{ background('market') }}>
-  {% from 'macros/beaver_section.html.j2' import beaver_section %}
+  {% from 'macros/section.html.j2' import beaver_section %}
   {{ beaver_section('Market Analysis', 'market_optimistic') }}
   {% for market in markets %}
     <section id="market-{{ market.id }}" data-auto-animate>

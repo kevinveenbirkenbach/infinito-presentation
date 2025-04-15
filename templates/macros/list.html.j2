@@ -1,0 +1,5 @@
+{# Wrapper macro for static HTML-rendered list items #}
+{% macro beaver_list(headline, entries, beaver=None) %}
+{% from 'macros/list_base.html.j2' import beaver_list_base %}
+{{ beaver_list_base(headline, entries, beaver) }}
+{% endmacro %}
