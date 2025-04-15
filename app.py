@@ -8,6 +8,7 @@ from services.template_service import TemplateService
 from services.slide_service import SlideService
 from utils.background_helper import get_background
 from utils.headline_extractor import extract_first_headline
+from services.color_scheme_service import ColorSchemeService
 
 app = Flask(__name__)
 
@@ -23,6 +24,11 @@ app_url_service = AppUrlService(CONFIG_PATH)
 docs_link_service = DocsLinkService(CONFIG_PATH)
 template_service = TemplateService(app.template_folder)
 slide_service = SlideService()
+color_scheme_service = ColorSchemeService(
+    base_color=app_url_service.get("base_color"),
+    output_path="static/css/color.css"
+)
+color_scheme_service.generate_color_scheme()
 
 @app.template_global()
 def background(file_path):

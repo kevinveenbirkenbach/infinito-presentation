@@ -1,6 +1,16 @@
 # Automatically regenerate `.env` before running any target
 .PHONY: up build run clean env
 
+# Clone the latest version of colorgen package locally
+update-vendor:
+	rm -rf vendor/colorscheme-generator
+	git clone https://github.com/kevinveenbirkenbach/colorscheme-generator.git vendor/colorscheme-generator
+
+# Create virtualenv and install python dependencies
+install: update-vendor
+	python -m venv .venv
+	. .venv/bin/activate && pip install --upgrade pip && pip install -r requirements.txt
+
 install: env build
 
 env:
@@ -11,7 +21,7 @@ env:
 
 # Example: Start docker-compose
 up: build
-	docker-compose up
+	docker-compose up -d
 
 # Other Makefile targets
 build: env
