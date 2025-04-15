@@ -2,4 +2,4 @@ flask
 requests
 markdown
 pyyaml
-colorscheme-generator @ https://github.com/kevinveenbirkenbach/colorscheme-generator/archive/refs/tags/0.1.0.zip
+colorscheme-generator @ https://github.com/kevinveenbirkenbach/colorscheme-generator/archive/refs/tags/v0.2.0.zip
