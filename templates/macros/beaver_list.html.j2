@@ -1,0 +1,23 @@
+{# templates/macros/beaver_list.html.j2 #}
+{% macro beaver_list(headline, entries, beaver=None) %}
+<section id="{{ headline | lower | replace(' ', '-') }}">
+  <h2 class="text-center">{{ headline }}</h2>
+
+  <div class="d-flex justify-content-center mt-4">
+    <div class="papyrus d-flex align-items-start">
+      {% if beaver %}
+        <img src="static/img/slides/pictures/beaver/{{ beaver }}.png"
+             alt="Beaver"
+             class="me-4"
+             style="max-width: 200px; height: auto;">
+      {% endif %}
+
+      <ul class="mb-0">
+        {% for entry in entries %}
+          <li>{{ entry }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</section>
+{% endmacro %}

@@ -1,7 +1,7 @@
 <section {{ background("server") }}>
   {% from 'macros/beaver_section.html.j2' import beaver_section %}
   {{ beaver_section('Technology', 'architect') }}
-  {% from 'macros/beaver_section.html.j2' import beaver_section %}
-  {{ beaver_section('Architectur','builder',extract_slide("/source/docs/ARCHITECTURE.md", "Key Points").content
-  ) }}
+
+  {% from 'macros/beaver_list.html.j2' import beaver_list %}
+  {{ beaver_list('Architecture', extract_slide("/source/docs/ARCHITECTURE.md", "Key Points", output_type="list").content, 'builder-right') }}
 </section>

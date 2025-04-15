@@ -54,22 +54,32 @@ class SlideService:
 
         return headline.strip(), self._convert_markdown_to_html(section_content)
 
-    def extract_content(self, file_path: str, headline: str = None) -> dict:
+    def extract_content(self, file_path: str, headline: str = None, output_type: str = "html") -> dict:
         content = self._read_file(file_path)
         _, ext = os.path.splitext(file_path)
 
         if ext == ".md":
             if headline:
-                title, html_content = self._extract_markdown_section(content, headline)
+                if output_type == "list":
+                    from utils.markdown_parser import MarkdownParser
+                    return {
+                        "title": headline,
+                        "content": MarkdownParser.extract_section(content, headline, output_type="list")
+                    }
+                else:
+                    title, html_content = self._extract_markdown_section(content, headline)
             else:
                 title = os.path.basename(os.path.dirname(file_path)).replace("-", " ").title()
                 html_content = self._convert_markdown_to_html(content)
+
         elif ext == ".j2":
             title = "Jinja2 Template"
             html_content = self._render_jinja2(content, file_path)
+
         elif ext == ".html":
             title = "HTML Content"
             html_content = content
+
         else:
             title = "Unsupported file type"
             html_content = ""
@@ -78,3 +88,4 @@ class SlideService:
             "title": title,
             "content": html_content
         }
+
