@@ -1,26 +1,31 @@
+{% set is_right = '-right' in beaver %}
+{% set flex_direction = 'row-reverse' if is_right else 'row' %}
+
 <section id="{{ headline | lower | replace(' ', '-') }}" {{ background(path) }}>
-    <h2>{{ headline }}</h2>
+  <h2 class="text-center">{{ headline }}</h2>
 
-    <div class="d-flex align-items-start">
-        {% if beaver %}
-            <img src="static/img/slides/pictures/beaver/{{ beaver }}.png" 
-                 alt="Beaver" 
-                 class="me-4" 
-                 style="max-width: 200px; height: auto;">
-        {% endif %}
+  <div class="d-flex justify-content-center mt-4">
+    <div class="papyrus d-flex align-items-start flex-{{ flex_direction }}">
+      {% if beaver %}
+        <img src="static/img/slides/pictures/beaver/{{ beaver }}.png"
+             alt="Beaver"
+             class="me-4"
+             style="max-width: 200px; height: auto;">
+      {% endif %}
 
-        <ul class="papyrus">
+      <ul class="mb-0">
         {% for entry in headlines(path) %}
-            <li>
-                {% if entry.id %}
-                    <a href="#{{ entry.id }}">{{ entry.headline }}</a>
-                {% else %}
-                    {{ entry.headline }}
-                {% endif %}
-            </li>
+          <li>
+            {% if entry.id %}
+              <a href="#{{ entry.id }}">{{ entry.headline }}</a>
+            {% else %}
+              {{ entry.headline }}
+            {% endif %}
+          </li>
         {% endfor %}
-        </ul>
+      </ul>
     </div>
+  </div>
 </section>
 
 {% for file in snippets(path) %}

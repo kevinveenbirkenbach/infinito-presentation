@@ -54,21 +54,20 @@ blockquote {
     max-height: 500px !important;
 }
 
-/* Papyrus Background & General Styling */
 .papyrus {
-    /* Papyrus background texture */
     background: url('/static/img/slides/backgrounds/list.png') no-repeat center center;
     background-size: 100% 100%;
-
-    /* Font styling */
     font-family: "Papyrus", "Segoe UI", cursive, serif;
-
-    /* Padding to move text inward */
-    padding: 20px 30px; /* Top/Bottom 20px, Left/Right 30px */
-    margin: 0px;
-
-    /* Border & Shadow for ancient look */
+    padding: 20px 30px;
+    margin: 0 auto;        /* Center the whole block */
     border: none;
+    text-align: left;
+    display: flex;
+    align-items: start;    /* Image & List top-aligned */
+}
+
+.papyrus img {
+    margin-right: 20px;    /* Space between image and list */
 }
 
 /* List styling inside Papyrus without bullets */
@@ -79,7 +78,7 @@ blockquote {
 }
 
 .papyrus li, .papyrus li a {
-    color: #5B3E2B;
+    color: #381905;
     /* Light brown text shadow */
     text-shadow:
     1px 1px 2px rgba(196, 164, 132, 0.7),
