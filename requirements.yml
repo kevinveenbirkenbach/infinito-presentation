@@ -5,4 +5,3 @@ pacman:
 # The python requirements are safed in the requirements.txt file
 pkgmgr:
 - cymais
-- j2r
