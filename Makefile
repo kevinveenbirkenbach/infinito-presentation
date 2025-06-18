@@ -4,7 +4,7 @@
 # Clone the latest version of colorgen package locally
 update-vendor:
 	rm -rf vendor/colorscheme-generator
-	git clone https://github.com/kevinveenbirkenbach/colorscheme-generator.git vendor/colorscheme-generator
+	git clone --depth=1 https://github.com/kevinveenbirkenbach/colorscheme-generator.git vendor/colorscheme-generator
 
 # Create virtualenv and install python dependencies
 install: update-vendor
