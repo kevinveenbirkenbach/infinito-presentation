@@ -1,4 +1,3 @@
-# utils/headline_extractor.py
 import re
 
 def slugify(value):

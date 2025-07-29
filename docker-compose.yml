@@ -1,10 +1,10 @@
 services:
-  cymais-presentation:
+  infinito-presentation:
     build:
       context: .
       dockerfile: Dockerfile
-    image: application-cymais-presentation
-    container_name: cymais-presentation
+    image: application-infinito-presentation
+    container_name: infinito-presentation
     ports:
       - "5000:5000"
     volumes:
